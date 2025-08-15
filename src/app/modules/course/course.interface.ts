@@ -7,6 +7,5 @@ export interface ICourse {
     thumbnail?: string,
     price: number,
     module?: Types.ObjectId[],
-    lecture?: Types.ObjectId[],
     user: Types.ObjectId
 }

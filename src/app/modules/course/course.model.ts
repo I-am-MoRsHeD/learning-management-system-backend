@@ -27,11 +27,7 @@ const courseSchema = new Schema<ICourse>({
     module: [{
         type: Schema.Types.ObjectId,
         ref: "Module"
-    }],
-    lecture: [{
-        type: Schema.Types.ObjectId,
-        ref: "Lecture"
-    }],
+    }]
 }, {
     versionKey: false,
     timestamps: true

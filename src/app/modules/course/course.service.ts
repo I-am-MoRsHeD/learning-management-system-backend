@@ -6,8 +6,7 @@ import { Course } from "./course.model";
 const getAllCourses = async () => {
     const courses = await Course.find({})
         .populate("user", "name email")
-        .populate("module")
-        .populate("lecture");
+        .populate("module");
 
     const totalCourses = await Course.countDocuments();
 
@@ -25,8 +24,7 @@ const getSingleCourse = async (id: string) => {
 
     const course = await Course.findById(id)
         .populate("user", "name email")
-        .populate("module")
-        .populate("lecture");
+        .populate("module");
 
     return course;
 };
