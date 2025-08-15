@@ -17,6 +17,18 @@ const getAllCourses = catchAsync(async (req: Request, res: Response) => {
     });
 });
 
+const getSingleCourse = catchAsync(async (req: Request, res: Response) => {
+    const { id } = req.params;
+    const course = await CourseServices.getSingleCourse(id);
+
+    sendResponse(res, {
+        statusCode: 200,
+        success: true,
+        message: 'Course retrieved successfully',
+        data: course
+    });
+});
+
 const createCourse = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
     const decodedUser = req.user;
     const payload: ICourse = {
@@ -64,6 +76,7 @@ const deleteCourse = catchAsync(async (req: Request, res: Response) => {
 
 export const CourseController = {
     getAllCourses,
+    getSingleCourse,
     createCourse,
     updateCourse,
     deleteCourse

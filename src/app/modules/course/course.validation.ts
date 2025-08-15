@@ -29,5 +29,6 @@ export const updateCourseZodSchema = z.object({
     price: z
         .number({ error: "Price must be number" })
         .min(1, { message: "Price must be at least 1" }).optional(),
-    module: z.array(z.string()).optional()
+    module: z.array(z.string()).optional(),
+    lecture: z.array(z.string()).optional()
 });

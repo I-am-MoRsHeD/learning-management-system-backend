@@ -4,7 +4,10 @@ import { ICourse } from "./course.interface";
 import { Course } from "./course.model";
 
 const getAllCourses = async () => {
-    const courses = await Course.find({});
+    const courses = await Course.find({})
+        .populate("user", "name email")
+        .populate("module")
+        .populate("lecture");
 
     const totalCourses = await Course.countDocuments();
 
@@ -16,6 +19,16 @@ const getAllCourses = async () => {
         data: courses,
         meta: meta
     }
+};
+
+const getSingleCourse = async (id: string) => {
+
+    const course = await Course.findById(id)
+        .populate("user", "name email")
+        .populate("module")
+        .populate("lecture");
+
+    return course;
 };
 
 
@@ -44,7 +57,6 @@ const updateCourse = async (id: string, payload: Partial<ICourse>) => {
 
     const updatedCourse = await Course.findByIdAndUpdate(id, payload, { new: true, runvalidators: true });
 
-
     return updatedCourse;
 };
 
@@ -61,6 +73,7 @@ const deleteCourse = async (id: string) => {
 
 export const CourseServices = {
     getAllCourses,
+    getSingleCourse,
     createCourse,
     updateCourse,
     deleteCourse
