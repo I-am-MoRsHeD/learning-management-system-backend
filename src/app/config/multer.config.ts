@@ -13,7 +13,11 @@ const storage = new CloudinaryStorage({
                 .replace(/\./g, "-")
                 .replace(/[^a-zA-Z0-9-]/g, "");
 
-            const uniqueFileName = Math.random().toString(36).substring(2) + "-" + Date.now() + "-" + fileName;;
+            const uniqueFileName = Math.random().toString(36).substring(2) + "-" + Date.now() + "-" + fileName;
+
+            // const extension = file.originalname.split(".").pop();
+
+            // const uniqueFileName = Math.random().toString(36).substring(2) + "-" + Date.now() + "-" + fileName + "." + extension;
 
             return uniqueFileName;
         }
