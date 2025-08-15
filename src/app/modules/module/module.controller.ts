@@ -5,8 +5,6 @@ import { IModule } from "./module.interface";
 import { sendResponse } from "../../utils/sendResponse";
 import { ModuleServices } from "./module.service";
 
-
-
 const createModule = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
     const module = await ModuleServices.createModule(req.body);
 

@@ -6,7 +6,10 @@ import { Course } from "./course.model";
 const getAllCourses = async () => {
     const courses = await Course.find({})
         .populate("user", "name email")
-        .populate("module");
+        .populate({
+            path :"module",
+            populate: "lecture"
+        });
 
     const totalCourses = await Course.countDocuments();
 

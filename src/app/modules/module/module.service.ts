@@ -4,7 +4,6 @@ import { Course } from "../course/course.model";
 import { IModule } from "./module.interface";
 import { Module } from "./module.model";
 
-
 const createModule = async (payload: Partial<IModule>) => {
     const session = await Module.startSession();
     session.startTransaction();
