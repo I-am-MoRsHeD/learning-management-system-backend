@@ -7,7 +7,7 @@ const getAllCourses = async () => {
     const courses = await Course.find({})
         .populate("user", "name email")
         .populate({
-            path :"module",
+            path: "module",
             populate: "lecture"
         });
 
@@ -27,7 +27,10 @@ const getSingleCourse = async (id: string) => {
 
     const course = await Course.findById(id)
         .populate("user", "name email")
-        .populate("module");
+        .populate({
+            path: "module",
+            populate: "lecture"
+        });
 
     return course;
 };
