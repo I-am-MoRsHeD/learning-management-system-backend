@@ -9,7 +9,7 @@ import { multerUpload } from "../../config/multer.config";
 const router = Router();
 
 router.get("/", checkAuth(...Object.values(Role)), CourseController.getAllCourses);
-router.get("/:id", checkAuth(Role.ADMIN), CourseController.getSingleCourse);
+router.get("/:id", checkAuth(...Object.values(Role)), CourseController.getSingleCourse);
 router.post('/create',
     checkAuth(Role.ADMIN),
     multerUpload.single("file"),
